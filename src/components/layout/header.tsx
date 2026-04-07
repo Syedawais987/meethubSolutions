@@ -128,16 +128,9 @@ export function Header() {
       </div>
 
       {/* Mobile Navigation Overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-16 z-50 overflow-y-auto border-t border-border bg-background pb-20 lg:hidden"
-          >
-            <nav className="container mx-auto space-y-1 px-4 py-4">
+      {mobileOpen && (
+        <div className="fixed inset-0 top-16 z-50 flex flex-col overflow-y-auto border-t border-border bg-background lg:hidden md:top-20">
+          <nav className="container mx-auto flex-1 space-y-1 px-4 py-4">
               {navigation.main.map((item) => (
                 <div key={item.href}>
                   <Link
@@ -170,9 +163,8 @@ export function Header() {
                 </Link>
               </div>
             </nav>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </header>
   );
 }
