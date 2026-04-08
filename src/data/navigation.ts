@@ -4,6 +4,45 @@ export interface NavItem {
   children?: NavItem[];
 }
 
+export interface ServiceCategory {
+  label: string;
+  services: { label: string; href: string }[];
+}
+
+export const serviceCategories: ServiceCategory[] = [
+  {
+    label: "Financial",
+    services: [
+      { label: "Accounting Services", href: "/services/accounting" },
+      { label: "Outsourcing & Virtual CFO", href: "/services/outsourcing" },
+      { label: "ERP Solutions", href: "/services/erp-solutions" },
+      { label: "Payroll & Compliance", href: "/services/payroll" },
+    ],
+  },
+  {
+    label: "Advisory",
+    services: [
+      { label: "Tax Consultancy", href: "/services/tax-consultancy" },
+      { label: "Governance & Compliance", href: "/services/governance-compliance" },
+      { label: "Training & Development", href: "/services/training-development" },
+    ],
+  },
+  {
+    label: "Assurance",
+    services: [
+      { label: "Internal Audit", href: "/services/internal-audit" },
+      { label: "Audit & Assurance", href: "/services/audit-assurance" },
+      { label: "Fixed Asset Management", href: "/services/fixed-asset-management" },
+    ],
+  },
+  {
+    label: "Specialized",
+    services: [
+      { label: "Data Archiving", href: "/services/data-archiving" },
+    ],
+  },
+];
+
 export const navigation = {
   main: [
     { label: "Home", href: "/" },
@@ -19,25 +58,6 @@ export const navigation = {
     {
       label: "Services",
       href: "/services",
-      children: [
-        { label: "Accounting Services", href: "/services/accounting" },
-        { label: "Outsourcing", href: "/services/outsourcing" },
-        { label: "ERP Solutions", href: "/services/erp-solutions" },
-        { label: "Tax Consultancy", href: "/services/tax-consultancy" },
-        { label: "Payroll & Compliance", href: "/services/payroll" },
-        { label: "Data Archiving", href: "/services/data-archiving" },
-        { label: "Governance & Compliance", href: "/services/governance-compliance" },
-        {
-          label: "Training & Development",
-          href: "/services/training-development",
-        },
-        { label: "Internal Audit", href: "/services/internal-audit" },
-        { label: "Audit & Assurance", href: "/services/audit-assurance" },
-        {
-          label: "Fixed Asset Management",
-          href: "/services/fixed-asset-management",
-        },
-      ],
     },
     { label: "Travel & Tours", href: "/travel" },
     { label: "Pricing", href: "/pricing" },

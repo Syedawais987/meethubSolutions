@@ -4,16 +4,18 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Menu, X, ChevronDown } from "lucide-react";
-import { navigation } from "@/data/navigation";
+import { Phone, Menu, X, ChevronDown, ChevronRight } from "lucide-react";
+import { navigation, serviceCategories } from "@/data/navigation";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [mobileExpandedCat, setMobileExpandedCat] = useState<string | null>(null);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
@@ -44,7 +46,98 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-1 lg:flex">
             {navigation.main.map((item) => {
+              const isServices = item.label === "Services";
               const hasChildren = "children" in item && item.children;
+
+              // Services gets the multi-level mega menu
+              if (isServices) {
+                return (
+                  <div
+                    key={item.href}
+                    className="relative"
+                    onMouseEnter={() => {
+                      setActiveDropdown("Services");
+                      setActiveCategory(serviceCategories[0]?.label || null);
+                    }}
+                    onMouseLeave={() => {
+                      setActiveDropdown(null);
+                      setActiveCategory(null);
+                    }}
+                  >
+                    <Link
+                      href={item.href}
+                      className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      {item.label}
+                      <ChevronDown className="h-3.5 w-3.5" />
+                    </Link>
+
+                    {/* Multi-level mega menu */}
+                    <AnimatePresence>
+                      {activeDropdown === "Services" && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute left-0 top-full z-50 flex rounded-xl border border-border bg-popover shadow-xl"
+                        >
+                          {/* Level 1: Categories */}
+                          <div className="w-52 border-r border-border p-2">
+                            <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                              Categories
+                            </p>
+                            {serviceCategories.map((cat) => (
+                              <div
+                                key={cat.label}
+                                onMouseEnter={() => setActiveCategory(cat.label)}
+                                className={`flex cursor-pointer items-center justify-between rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                                  activeCategory === cat.label
+                                    ? "bg-muted text-primary"
+                                    : "text-foreground hover:bg-muted"
+                                }`}
+                              >
+                                {cat.label}
+                                <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
+                              </div>
+                            ))}
+                            <div className="mt-2 border-t border-border pt-2">
+                              <Link
+                                href="/services"
+                                className="block rounded-md px-3 py-2 text-sm font-semibold text-primary transition-colors hover:bg-muted"
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                View All Services
+                              </Link>
+                            </div>
+                          </div>
+
+                          {/* Level 2: Sub-services */}
+                          <div className="w-60 p-2">
+                            <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                              {activeCategory || "Services"}
+                            </p>
+                            {serviceCategories
+                              .find((c) => c.label === activeCategory)
+                              ?.services.map((service) => (
+                                <Link
+                                  key={service.href}
+                                  href={service.href}
+                                  className="block rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary"
+                                  onClick={() => setActiveDropdown(null)}
+                                >
+                                  {service.label}
+                                </Link>
+                              ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              // Regular items with simple dropdown (About)
               return (
                 <div
                   key={item.href}
@@ -56,11 +149,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                      item.label === "Services"
-                        ? "text-brand-teal font-semibold"
-                        : "text-muted-foreground"
-                    }`}
+                    className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
                   >
                     {item.label}
                     {hasChildren && (
@@ -68,7 +157,6 @@ export function Header() {
                     )}
                   </Link>
 
-                  {/* Dropdown */}
                   <AnimatePresence>
                     {hasChildren && activeDropdown === item.label && (
                       <motion.div
@@ -76,7 +164,7 @@ export function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute left-0 top-full z-50 w-64 rounded-xl border border-border bg-popover p-2 shadow-lg"
+                        className="absolute left-0 top-full z-50 w-56 rounded-xl border border-border bg-popover p-2 shadow-lg"
                       >
                         {item.children!.map((child) => (
                           <Link
@@ -141,21 +229,15 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Navigation - OUTSIDE header to avoid stacking context issues */}
+      {/* Mobile Navigation */}
       {mobileOpen && (
         <div
           className="fixed inset-0 z-[100] lg:hidden"
           style={{ top: 0 }}
         >
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 bg-background"
-            onClick={() => setMobileOpen(false)}
-          />
-
-          {/* Menu content */}
+          <div className="absolute inset-0 bg-background" />
           <div className="relative z-10 flex h-full flex-col bg-background">
-            {/* Menu header matching main header */}
+            {/* Mobile header */}
             <div className="flex h-16 shrink-0 items-center justify-between border-b border-border px-4 md:h-20">
               <Link
                 href="/"
@@ -180,31 +262,122 @@ export function Header() {
               </Button>
             </div>
 
-            {/* Scrollable nav items */}
+            {/* Mobile nav items */}
             <nav className="flex-1 overflow-y-auto px-4 py-4 pb-24">
               <div className="space-y-1">
-                {navigation.main.map((item) => (
-                  <div key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="block rounded-md px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                    {"children" in item &&
-                      item.children?.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block rounded-md px-6 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
-                          onClick={() => setMobileOpen(false)}
+                {navigation.main.map((item) => {
+                  const isServices = item.label === "Services";
+                  const hasChildren = "children" in item && item.children;
+                  const isExpanded = mobileExpanded === item.label;
+
+                  // Services — collapsible with categories
+                  if (isServices) {
+                    return (
+                      <div key={item.href}>
+                        <button
+                          onClick={() =>
+                            setMobileExpanded(isExpanded ? null : "Services")
+                          }
+                          className="flex w-full items-center justify-between rounded-md px-3 py-3 text-base font-medium text-foreground"
                         >
-                          {child.label}
-                        </Link>
-                      ))}
-                  </div>
-                ))}
+                          Services
+                          <ChevronDown
+                            className={`h-4 w-4 text-muted-foreground transition-transform ${
+                              isExpanded ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                        {isExpanded && (
+                          <div className="ml-3 space-y-1 border-l-2 border-border pl-3">
+                            {serviceCategories.map((cat) => {
+                              const catExpanded = mobileExpandedCat === cat.label;
+                              return (
+                                <div key={cat.label}>
+                                  <button
+                                    onClick={() =>
+                                      setMobileExpandedCat(catExpanded ? null : cat.label)
+                                    }
+                                    className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-bold uppercase tracking-wider text-muted-foreground"
+                                  >
+                                    {cat.label}
+                                    <ChevronDown
+                                      className={`h-3.5 w-3.5 transition-transform ${
+                                        catExpanded ? "rotate-180" : ""
+                                      }`}
+                                    />
+                                  </button>
+                                  {catExpanded &&
+                                    cat.services.map((service) => (
+                                      <Link
+                                        key={service.href}
+                                        href={service.href}
+                                        className="block rounded-md px-6 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
+                                        onClick={() => setMobileOpen(false)}
+                                      >
+                                        {service.label}
+                                      </Link>
+                                    ))}
+                                </div>
+                              );
+                            })}
+                            <Link
+                              href="/services"
+                              className="block rounded-md px-3 py-2 text-sm font-semibold text-primary"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              View All Services
+                            </Link>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+
+                  // About and other items with children — collapsible
+                  if (hasChildren) {
+                    return (
+                      <div key={item.href}>
+                        <button
+                          onClick={() =>
+                            setMobileExpanded(isExpanded ? null : item.label)
+                          }
+                          className="flex w-full items-center justify-between rounded-md px-3 py-3 text-base font-medium text-foreground"
+                        >
+                          {item.label}
+                          <ChevronDown
+                            className={`h-4 w-4 text-muted-foreground transition-transform ${
+                              isExpanded ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                        {isExpanded &&
+                          item.children?.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className="block rounded-md px-6 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                      </div>
+                    );
+                  }
+
+                  // Simple links
+                  return (
+                    <div key={item.href}>
+                      <Link
+                        href={item.href}
+                        className="block rounded-md px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    </div>
+                  );
+                })}
               </div>
 
               <div className="mt-6 border-t border-border pt-6">

@@ -24,7 +24,7 @@ export function ClientLogos() {
           viewport={{ once: true }}
           className="mb-8 text-center text-sm font-medium uppercase tracking-wider text-muted-foreground"
         >
-          Trusted by 200+ businesses across Pakistan
+          Trusted by 50+ businesses across Pakistan
         </motion.p>
 
         {/* Infinite scroll container */}

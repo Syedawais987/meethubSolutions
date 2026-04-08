@@ -28,7 +28,7 @@ export default function CeoMessagePage() {
               <div className="sticky top-28 overflow-hidden rounded-2xl border border-border bg-muted p-12 text-center">
                 <User className="mx-auto h-24 w-24 text-muted-foreground/30" />
                 <p className="mt-4 text-sm text-muted-foreground">
-                  CEO photo placeholder
+                  
                 </p>
                 <div className="mt-6 border-t border-border pt-6">
                   <h3 className="font-heading text-xl font-bold text-foreground">
