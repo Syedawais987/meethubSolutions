@@ -2,19 +2,26 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Menu, X, ChevronDown, ChevronRight } from "lucide-react";
+import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { navigation, serviceCategories } from "@/data/navigation";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Button } from "@/components/ui/button";
 
+const allServices = serviceCategories.flatMap((cat) => cat.services);
+
 export function Header() {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
-  const [mobileExpandedCat, setMobileExpandedCat] = useState<string | null>(null);
+
+  function isActive(href: string) {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  }
 
   useEffect(() => {
     if (mobileOpen) {
@@ -49,30 +56,25 @@ export function Header() {
               const isServices = item.label === "Services";
               const hasChildren = "children" in item && item.children;
 
-              // Services gets the multi-level mega menu
+              // Services — simple single-level dropdown
               if (isServices) {
                 return (
                   <div
                     key={item.href}
                     className="relative"
-                    onMouseEnter={() => {
-                      setActiveDropdown("Services");
-                      setActiveCategory(serviceCategories[0]?.label || null);
-                    }}
-                    onMouseLeave={() => {
-                      setActiveDropdown(null);
-                      setActiveCategory(null);
-                    }}
+                    onMouseEnter={() => setActiveDropdown("Services")}
+                    onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <Link
                       href={item.href}
-                      className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                      className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                        isActive("/services") ? "text-brand-teal font-semibold" : "text-muted-foreground"
+                      }`}
                     >
                       {item.label}
                       <ChevronDown className="h-3.5 w-3.5" />
                     </Link>
 
-                    {/* Multi-level mega menu */}
                     <AnimatePresence>
                       {activeDropdown === "Services" && (
                         <motion.div
@@ -80,55 +82,26 @@ export function Header() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -8 }}
                           transition={{ duration: 0.15 }}
-                          className="absolute left-0 top-full z-50 flex rounded-xl border border-border bg-popover shadow-xl"
+                          className="absolute left-0 top-full z-50 w-64 rounded-xl border border-border bg-popover p-2 shadow-lg"
                         >
-                          {/* Level 1: Categories */}
-                          <div className="w-52 border-r border-border p-2">
-                            <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                              Categories
-                            </p>
-                            {serviceCategories.map((cat) => (
-                              <div
-                                key={cat.label}
-                                onMouseEnter={() => setActiveCategory(cat.label)}
-                                className={`flex cursor-pointer items-center justify-between rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                                  activeCategory === cat.label
-                                    ? "bg-muted text-primary"
-                                    : "text-foreground hover:bg-muted"
-                                }`}
-                              >
-                                {cat.label}
-                                <ChevronRight className="h-3.5 w-3.5 text-muted-foreground" />
-                              </div>
-                            ))}
-                            <div className="mt-2 border-t border-border pt-2">
-                              <Link
-                                href="/services"
-                                className="block rounded-md px-3 py-2 text-sm font-semibold text-primary transition-colors hover:bg-muted"
-                                onClick={() => setActiveDropdown(null)}
-                              >
-                                View All Services
-                              </Link>
-                            </div>
-                          </div>
-
-                          {/* Level 2: Sub-services */}
-                          <div className="w-60 p-2">
-                            <p className="px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                              {activeCategory || "Services"}
-                            </p>
-                            {serviceCategories
-                              .find((c) => c.label === activeCategory)
-                              ?.services.map((service) => (
-                                <Link
-                                  key={service.href}
-                                  href={service.href}
-                                  className="block rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary"
-                                  onClick={() => setActiveDropdown(null)}
-                                >
-                                  {service.label}
-                                </Link>
-                              ))}
+                          {allServices.map((service) => (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              className="block rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary"
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              {service.label}
+                            </Link>
+                          ))}
+                          <div className="mt-1 border-t border-border pt-1">
+                            <Link
+                              href="/services"
+                              className="block rounded-md px-3 py-2 text-sm font-semibold text-primary transition-colors hover:bg-muted"
+                              onClick={() => setActiveDropdown(null)}
+                            >
+                              View All Services
+                            </Link>
                           </div>
                         </motion.div>
                       )}
@@ -149,7 +122,9 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                    className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                      isActive(item.href) ? "text-brand-teal font-semibold" : "text-muted-foreground"
+                    }`}
                   >
                     {item.label}
                     {hasChildren && (
@@ -288,41 +263,20 @@ export function Header() {
                           />
                         </button>
                         {isExpanded && (
-                          <div className="ml-3 space-y-1 border-l-2 border-border pl-3">
-                            {serviceCategories.map((cat) => {
-                              const catExpanded = mobileExpandedCat === cat.label;
-                              return (
-                                <div key={cat.label}>
-                                  <button
-                                    onClick={() =>
-                                      setMobileExpandedCat(catExpanded ? null : cat.label)
-                                    }
-                                    className="flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-bold uppercase tracking-wider text-muted-foreground"
-                                  >
-                                    {cat.label}
-                                    <ChevronDown
-                                      className={`h-3.5 w-3.5 transition-transform ${
-                                        catExpanded ? "rotate-180" : ""
-                                      }`}
-                                    />
-                                  </button>
-                                  {catExpanded &&
-                                    cat.services.map((service) => (
-                                      <Link
-                                        key={service.href}
-                                        href={service.href}
-                                        className="block rounded-md px-6 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
-                                        onClick={() => setMobileOpen(false)}
-                                      >
-                                        {service.label}
-                                      </Link>
-                                    ))}
-                                </div>
-                              );
-                            })}
+                          <div className="space-y-0.5">
+                            {allServices.map((service) => (
+                              <Link
+                                key={service.href}
+                                href={service.href}
+                                className="block rounded-md px-6 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                                onClick={() => setMobileOpen(false)}
+                              >
+                                {service.label}
+                              </Link>
+                            ))}
                             <Link
                               href="/services"
-                              className="block rounded-md px-3 py-2 text-sm font-semibold text-primary"
+                              className="block rounded-md px-6 py-2.5 text-sm font-semibold text-primary"
                               onClick={() => setMobileOpen(false)}
                             >
                               View All Services
