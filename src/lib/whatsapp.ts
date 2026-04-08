@@ -7,7 +7,7 @@ export function getWhatsAppUrl(message: string): string {
 
 export const whatsappMessages = {
   general:
-    "Hello! I'd like to learn more about MeetHub Solutions services.",
+    "Hello! I'd like to learn more about Meet Hub Financial Services services.",
   accounting:
     "Hi, I'm interested in your accounting services. Can you share details and pricing?",
   outsourcing:

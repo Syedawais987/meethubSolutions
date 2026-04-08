@@ -14,6 +14,7 @@ import {
   SearchCheck,
   ShieldCheck,
   BarChart3,
+  Banknote,
   Plane,
   ArrowRight,
 } from "lucide-react";
@@ -30,6 +31,7 @@ const iconMap: Record<string, React.ElementType> = {
   SearchCheck,
   ShieldCheck,
   BarChart3,
+  Banknote,
   Plane,
 };
 
@@ -68,18 +70,24 @@ const serviceItems: ServiceItem[] = [
     href: "/services/tax-consultancy",
   },
   {
+    title: "Payroll & Compliance",
+    icon: "Banknote",
+    description: "Salary sheets, tax deductions, EOBI, and payroll compliance",
+    href: "/services/payroll",
+  },
+  {
     title: "Data Archiving",
     icon: "Archive",
     description:
-      "Cloud-based archiving, off-site storage, and secure shredding",
+      "Cloud archiving, off-site storage, and certified shredding",
     href: "/services/data-archiving",
   },
   {
-    title: "Corporate Advisory",
+    title: "Governance & Compliance",
     icon: "Landmark",
     description:
-      "SECP registration, governance, and policy development",
-    href: "/services/corporate-advisory",
+      "SECP registration, governance frameworks, and policy development",
+    href: "/services/governance-compliance",
   },
   {
     title: "Training",

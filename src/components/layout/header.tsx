@@ -33,10 +33,10 @@ export function Header() {
           <Link href="/" className="flex shrink-0 items-center">
             <Image
               src="/images/logo.png"
-              alt="MeetHub Solutions"
-              width={160}
-              height={45}
-              className="h-9 w-auto md:h-11"
+              alt="Meet Hub Financial Services"
+              width={250}
+              height={73}
+              className="h-10 w-auto sm:h-12 md:h-14"
               priority
             />
           </Link>
@@ -56,7 +56,11 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                    className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                      item.label === "Services"
+                        ? "text-brand-teal font-semibold"
+                        : "text-muted-foreground"
+                    }`}
                   >
                     {item.label}
                     {hasChildren && (
@@ -78,7 +82,7 @@ export function Header() {
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+                            className="block rounded-md px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted hover:text-primary"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {child.label}
@@ -95,19 +99,27 @@ export function Header() {
           {/* Desktop Actions */}
           <div className="hidden items-center gap-2 lg:flex">
             <a
-              href="tel:+923333551164"
+              href="tel:+923345444107"
               className="flex items-center gap-1.5 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-primary"
             >
               <Phone className="h-4 w-4" />
-              <span className="hidden xl:inline">+92 333 3551164</span>
+              <span className="hidden xl:inline">+92 334 5444107</span>
             </a>
             <ThemeToggle />
             <Link
               href={navigation.cta.href}
-              className="ml-1 inline-flex h-8 items-center justify-center rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80"
+              className="ml-1 inline-flex h-8 items-center justify-center rounded-lg border border-primary/30 px-4 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               {navigation.cta.label}
             </Link>
+            <a
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "923345444107"}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-8 items-center justify-center gap-1.5 rounded-lg bg-[#25D366] px-4 text-sm font-bold text-white transition-colors hover:bg-[#1fad55]"
+            >
+              Contact Us
+            </a>
           </div>
 
           {/* Mobile Actions */}
@@ -152,10 +164,10 @@ export function Header() {
               >
                 <Image
                   src="/images/logo.png"
-                  alt="MeetHub Solutions"
-                  width={160}
-                  height={45}
-                  className="h-9 w-auto md:h-11"
+                  alt="Meet Hub Financial Services"
+                  width={250}
+                  height={73}
+                  className="h-10 w-auto sm:h-12 md:h-14"
                 />
               </Link>
               <Button
@@ -204,11 +216,11 @@ export function Header() {
                   Get a Quote
                 </Link>
                 <a
-                  href="tel:+923333551164"
+                  href="tel:+923345444107"
                   className="mt-3 flex items-center justify-center gap-2 rounded-md py-2.5 text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
                   <Phone className="h-4 w-4" />
-                  +92 333 3551164
+                  +92 334 5444107
                 </a>
               </div>
             </nav>

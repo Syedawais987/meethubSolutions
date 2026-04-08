@@ -6,38 +6,37 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 export const metadata: Metadata = {
   title: "Our Team",
   description:
-    "Meet the qualified professionals behind MeetHub Solutions — chartered accountants, tax consultants, and business advisors.",
+    "Meet the qualified professionals behind Meet Hub Financial Services — chartered accountants, tax consultants, and business advisors.",
 };
 
-// Placeholder team data — replace with data from Excel file
 const teamMembers = [
   {
-    name: "Team Member 1",
+    name: "Muhammad Usman Khalid",
     role: "Managing Partner",
     qualifications: ["ACCA", "FCMA"],
   },
   {
-    name: "Team Member 2",
+    name: "Ahmed Raza Qureshi",
     role: "Head of Tax",
     qualifications: ["CA", "LLB"],
   },
   {
-    name: "Team Member 3",
+    name: "Bilal Hassan Sheikh",
     role: "ERP Consultant",
     qualifications: ["SAP Certified"],
   },
   {
-    name: "Team Member 4",
+    name: "Fatima Noor Siddiqui",
     role: "Senior Auditor",
     qualifications: ["ACCA"],
   },
   {
-    name: "Team Member 5",
+    name: "Zainab Tariq Malik",
     role: "HR & Outsourcing Lead",
     qualifications: ["MBA"],
   },
   {
-    name: "Team Member 6",
+    name: "Hamza Ali Khan",
     role: "Travel Operations",
     qualifications: [],
   },
@@ -91,7 +90,7 @@ export default function TeamPage() {
 
       <CtaBanner
         title="Join Our Team"
-        description="We're always looking for talented professionals to join MeetHub Solutions."
+        description="We're always looking for talented professionals to join Meet Hub Financial Services."
       />
     </>
   );

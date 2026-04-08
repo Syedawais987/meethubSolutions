@@ -1,16 +1,14 @@
 export const siteConfig = {
-  name: "MeetHub Solutions",
+  name: "Meet Hub Financial Services",
   description:
     "Pakistan's integrated professional services firm — accounting, tax consultancy, corporate advisory, ERP solutions, training, and travel services.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://meethubsolutions.com",
-  email: "info@meethubsolutions.com",
-  phone: "+92 333 3551164",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "923333551164",
-  address: "Razia Sharif Plaza, Blue Area, Islamabad",
+  email: "meethub101@gmail.com",
+  phone: "+92 334 5444107",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "923345444107",
+  address: "DHA 2, Islamabad",
   socials: {
-    facebook: "",
-    instagram: "",
-    linkedin: "",
-    twitter: "",
+    facebook: "https://www.facebook.com/profile.php?id=61574347864306",
+    instagram: "https://www.instagram.com/",
   },
 } as const;

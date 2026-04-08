@@ -25,8 +25,8 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: {
-    default: "MeetHub Solutions — Accounting, Advisory & Travel Services",
-    template: "%s | MeetHub Solutions",
+    default: "Meet Hub Financial Services — Accounting, Advisory & Travel Services",
+    template: "%s | Meet Hub Financial Services",
   },
   description:
     "Pakistan's integrated professional services firm — accounting, tax consultancy, corporate advisory, ERP solutions, training, and travel services.",

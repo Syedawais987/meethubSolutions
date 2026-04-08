@@ -24,7 +24,7 @@ interface FaqAccordionProps {
 
 const defaultFaqs: FaqItem[] = [
   {
-    question: "What services does MeetHub Solutions offer?",
+    question: "What services does Meet Hub Financial Services offer?",
     answer:
       "We offer comprehensive business services including accounting & bookkeeping, tax consultancy, corporate advisory (SECP registration), ERP solutions, department outsourcing, internal audit, audit & assurance, data archiving, training & development, fixed asset management, and travel & tour packages.",
   },

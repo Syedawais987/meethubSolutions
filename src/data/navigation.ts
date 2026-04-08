@@ -24,8 +24,9 @@ export const navigation = {
         { label: "Outsourcing", href: "/services/outsourcing" },
         { label: "ERP Solutions", href: "/services/erp-solutions" },
         { label: "Tax Consultancy", href: "/services/tax-consultancy" },
+        { label: "Payroll & Compliance", href: "/services/payroll" },
         { label: "Data Archiving", href: "/services/data-archiving" },
-        { label: "Corporate Advisory", href: "/services/corporate-advisory" },
+        { label: "Governance & Compliance", href: "/services/governance-compliance" },
         {
           label: "Training & Development",
           href: "/services/training-development",

@@ -1,37 +1,51 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { UserPlus, Search, Rocket, HeartHandshake } from "lucide-react";
+import { ClipboardList, Settings, Play, ShieldCheck, BarChart3, RefreshCw } from "lucide-react";
 import { SectionHeader } from "@/components/shared/section-header";
 
 const steps = [
   {
     step: 1,
-    title: "Client Onboarding",
+    title: "Consultation",
     description:
-      "We start by understanding your business, goals, and regulatory landscape through a detailed discovery session.",
-    icon: UserPlus,
+      "Assessing your business needs, compliance requirements, and financial landscape.",
+    icon: ClipboardList,
   },
   {
     step: 2,
-    title: "Research & Analysis",
+    title: "Setup",
     description:
-      "Our team analyzes your financial, tax, and compliance requirements to build a tailored service plan.",
-    icon: Search,
+      "Designing chart of accounts, systems, reporting frameworks, and governance structures.",
+    icon: Settings,
   },
   {
     step: 3,
-    title: "Service Execution",
+    title: "Execution",
     description:
-      "We deliver — from company registration to tax filing to audit support — with regular progress updates.",
-    icon: Rocket,
+      "Recording transactions, reconciliations, payroll processing, and tax filings.",
+    icon: Play,
   },
   {
     step: 4,
-    title: "Ongoing Support",
+    title: "Compliance",
     description:
-      "Continuous advisory, proactive compliance monitoring, and a dedicated point of contact for your business.",
-    icon: HeartHandshake,
+      "Managing tax filings, statutory returns, SECP requirements, and audit support.",
+    icon: ShieldCheck,
+  },
+  {
+    step: 5,
+    title: "Reporting",
+    description:
+      "Delivering management accounts, financial insights, and variance analysis.",
+    icon: BarChart3,
+  },
+  {
+    step: 6,
+    title: "Continuous Advisory",
+    description:
+      "Offering ongoing improvements, updates, and strategic financial guidance.",
+    icon: RefreshCw,
   },
 ];
 
@@ -42,7 +56,7 @@ export function WorkingProcess() {
         <SectionHeader
           subtitle="Our Process"
           title="How We Work"
-          description="A proven four-step approach that ensures quality, transparency, and results."
+          description="A proven six-step approach that ensures quality, compliance, and continuous improvement."
         />
 
         {/* Desktop: horizontal timeline */}
@@ -51,7 +65,7 @@ export function WorkingProcess() {
             {/* Connector line */}
             <div className="absolute left-0 right-0 top-12 h-0.5 bg-border" />
 
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-3 gap-6 lg:grid-cols-6">
               {steps.map((step, i) => (
                 <motion.div
                   key={step.step}

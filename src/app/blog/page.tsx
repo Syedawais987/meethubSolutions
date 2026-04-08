@@ -6,7 +6,7 @@ import { PageHeader } from "@/components/shared/page-header";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Insights on accounting, tax compliance, corporate governance, ERP, and travel in Pakistan — from the MeetHub Solutions team.",
+    "Insights on accounting, tax compliance, corporate governance, ERP, and travel in Pakistan — from the Meet Hub Financial Services team.",
 };
 
 export default function BlogPage() {
@@ -14,7 +14,7 @@ export default function BlogPage() {
     <>
       <PageHeader
         title="Blog"
-        description="Insights, guides, and updates from the MeetHub Solutions team."
+        description="Insights, guides, and updates from the Meet Hub Financial Services team."
         breadcrumbs={[{ label: "Blog" }]}
       />
 

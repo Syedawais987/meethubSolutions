@@ -18,12 +18,12 @@ import { getWhatsAppUrl, whatsappMessages } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with MeetHub Solutions. Office address, phone, email, WhatsApp — we're here to help with all your business needs.",
+    "Get in touch with Meet Hub Financial Services. Office address, phone, email, WhatsApp — we're here to help with all your business needs.",
 };
 
 const contactFaqs = [
   {
-    question: "What services does MeetHub Solutions offer?",
+    question: "What services does Meet Hub Financial Services offer?",
     answer:
       "We offer comprehensive business services including accounting & bookkeeping, tax consultancy, corporate advisory (SECP registration), ERP solutions, department outsourcing, internal audit, audit & assurance, data archiving, training & development, fixed asset management, and travel & tour packages.",
   },
@@ -112,25 +112,25 @@ export default function ContactPage() {
                   <li className="flex items-start gap-3">
                     <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     <span className="text-muted-foreground">
-                      Razia Sharif Plaza, Blue Area, Islamabad
+                      DHA 2, Islamabad
                     </span>
                   </li>
                   <li>
                     <a
-                      href="tel:+923333551164"
+                      href="tel:+923345444107"
                       className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-primary"
                     >
                       <Phone className="h-5 w-5 shrink-0 text-primary" />
-                      +92 333 3551164
+                      +92 334 5444107
                     </a>
                   </li>
                   <li>
                     <a
-                      href="mailto:info@meethubsolutions.com"
+                      href="mailto:meethub101@gmail.com"
                       className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-primary"
                     >
                       <Mail className="h-5 w-5 shrink-0 text-primary" />
-                      info@meethubsolutions.com
+                      meethub101@gmail.com
                     </a>
                   </li>
                   <li className="flex items-center gap-3">
@@ -164,6 +164,33 @@ export default function ContactPage() {
                 </div>
               </a>
 
+              {/* Social Media */}
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="font-heading text-lg font-semibold text-foreground">
+                  Follow Us
+                </h3>
+                <div className="mt-4 flex gap-3">
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61574347864306"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#1877F2]/10 text-[#1877F2] transition-colors hover:bg-[#1877F2] hover:text-white"
+                    aria-label="Facebook"
+                  >
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#E4405F]/10 text-[#E4405F] transition-colors hover:bg-[#E4405F] hover:text-white"
+                    aria-label="Instagram"
+                  >
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                  </a>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -172,14 +199,14 @@ export default function ContactPage() {
       {/* Google Map */}
       <section className="border-y border-border">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13278.952622953498!2d73.0400!3d33.7100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf11b4383b01%3A0x4f0e3c0b4b0e2b0a!2sRazia%20Sharif%20Plaza%2C%20Blue%20Area%2C%20Islamabad!5e0!3m2!1sen!2s!4v1712400000000!5m2!1sen!2s"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13278.952622953498!2d73.0800!3d33.5200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df95c5b1c1b5b1%3A0x1234567890abcdef!2sDHA%20Phase%202%2C%20Islamabad%2C%20Pakistan!5e0!3m2!1sen!2s!4v1712400000000!5m2!1sen!2s"
           width="100%"
           height="350"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="MeetHub Solutions Office Location"
+          title="Meet Hub Financial Services Office Location"
           className="grayscale transition-all hover:grayscale-0"
         />
       </section>

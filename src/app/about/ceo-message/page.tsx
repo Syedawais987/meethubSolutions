@@ -6,7 +6,7 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 export const metadata: Metadata = {
   title: "CEO Message",
   description:
-    "A message from our CEO on MeetHub Solutions' vision for integrated business services in Pakistan.",
+    "A message from our CEO on Meet Hub Financial Services' vision for integrated business services in Pakistan.",
 };
 
 export default function CeoMessagePage() {
@@ -32,10 +32,10 @@ export default function CeoMessagePage() {
                 </p>
                 <div className="mt-6 border-t border-border pt-6">
                   <h3 className="font-heading text-xl font-bold text-foreground">
-                    CEO Name
+                    M. Noman
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Founder &amp; CEO, MeetHub Solutions
+                    Founder &amp; CEO, Meet Hub Financial Services
                   </p>
                 </div>
               </div>
@@ -47,7 +47,7 @@ export default function CeoMessagePage() {
                 <p className="text-xl leading-relaxed">Dear Partners and Friends,</p>
 
                 <p>
-                  When I founded MeetHub Solutions, I envisioned a firm that
+                  When I founded Meet Hub Financial Services, I envisioned a firm that
                   would redefine how businesses in Pakistan access professional
                   services. Too often, companies — especially SMEs — struggle
                   with the complexity and cost of managing multiple service
@@ -79,17 +79,17 @@ export default function CeoMessagePage() {
                 </p>
 
                 <p>
-                  Thank you for trusting MeetHub Solutions. We look forward to
+                  Thank you for trusting Meet Hub Financial Services. We look forward to
                   being part of your success story.
                 </p>
 
                 <p className="mt-8 font-semibold text-foreground">
                   Warm regards,
                   <br />
-                  <span className="text-primary">CEO Name</span>
+                  <span className="text-primary">M. Noman</span>
                   <br />
                   <span className="text-sm font-normal">
-                    Founder &amp; CEO, MeetHub Solutions
+                    Founder &amp; CEO, Meet Hub Financial Services
                   </span>
                 </p>
               </div>

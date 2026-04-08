@@ -14,7 +14,7 @@ export function JsonLd({ data }: JsonLdProps) {
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "MeetHub Solutions",
+  name: "Meet Hub Financial Services",
   url: "https://meethubsolutions.com",
   description:
     "Pakistan's integrated professional services firm — accounting, tax consultancy, corporate advisory, ERP solutions, training, and travel services.",
@@ -26,7 +26,7 @@ export const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    email: "info@meethubsolutions.com",
+    email: "meethub101@gmail.com",
     availableLanguage: ["English", "Urdu"],
   },
 };
@@ -34,7 +34,7 @@ export const organizationSchema = {
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "MeetHub Solutions",
+  name: "Meet Hub Financial Services",
   url: "https://meethubsolutions.com",
   description:
     "Accounting, tax consultancy, corporate advisory, ERP solutions, training, and travel services in Pakistan.",
@@ -44,7 +44,7 @@ export const localBusinessSchema = {
     addressCountry: "PK",
   },
   openingHours: ["Mo-Fr 09:00-18:00", "Sa 10:00-14:00"],
-  email: "info@meethubsolutions.com",
+  email: "meethub101@gmail.com",
   priceRange: "$$",
 };
 
@@ -60,7 +60,7 @@ export function serviceSchema(service: {
     description: service.description,
     provider: {
       "@type": "Organization",
-      name: "MeetHub Solutions",
+      name: "Meet Hub Financial Services",
     },
     areaServed: {
       "@type": "Country",

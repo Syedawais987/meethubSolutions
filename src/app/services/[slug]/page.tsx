@@ -13,6 +13,7 @@ import {
   SearchCheck,
   ShieldCheck,
   BarChart3,
+  Banknote,
   ArrowRight,
   CheckCircle,
   MessageCircle,
@@ -37,6 +38,7 @@ const iconMap: Record<string, React.ElementType> = {
   SearchCheck,
   ShieldCheck,
   BarChart3,
+  Banknote,
 };
 
 export async function generateStaticParams() {

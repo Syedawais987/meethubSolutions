@@ -14,6 +14,7 @@ import {
   SearchCheck,
   ShieldCheck,
   BarChart3,
+  Banknote,
   ArrowRight,
   MessageCircle,
 } from "lucide-react";
@@ -34,6 +35,7 @@ const iconMap: Record<string, React.ElementType> = {
   SearchCheck,
   ShieldCheck,
   BarChart3,
+  Banknote,
 };
 
 const categories = [
@@ -78,15 +80,18 @@ function ServiceCard({ service }: { service: Service }) {
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ type: "spring", stiffness: 300, damping: 24 }}
               >
-                <p className="mt-2 text-sm text-muted-foreground">
+                <p className="mt-2 text-sm font-medium text-foreground">
                   {service.tagline}
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {service.description}
                 </p>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-primary/80"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  Learn More
+                  View Full Details
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </motion.div>

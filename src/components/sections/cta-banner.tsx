@@ -14,7 +14,7 @@ interface CtaBannerProps {
 
 export function CtaBanner({
   title = "Ready to Simplify Your Business Operations?",
-  description = "Let's talk about how MeetHub Solutions can help you focus on what matters most.",
+  description = "Let's talk about how Meet Hub Financial Services can help you focus on what matters most.",
   className = "",
 }: CtaBannerProps) {
   return (
@@ -62,11 +62,11 @@ export function CtaBanner({
             Book a Free Consultation
           </Link>
           <a
-            href="tel:+923333551164"
+            href="tel:+923345444107"
             className="inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
           >
             <Phone className="h-4 w-4" />
-            Or call us: +92 333 3551164
+            Or call us: +92 334 5444107
           </a>
         </motion.div>
 

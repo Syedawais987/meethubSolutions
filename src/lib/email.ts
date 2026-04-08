@@ -2,8 +2,8 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM_EMAIL = "MeetHub Solutions <onboarding@resend.dev>";
-const TEAM_EMAIL = process.env.CONTACT_EMAIL || "info@meethubsolutions.com";
+const FROM_EMAIL = "Meet Hub Financial Services <onboarding@resend.dev>";
+const TEAM_EMAIL = process.env.CONTACT_EMAIL || "meethub101@gmail.com";
 
 export function generateReference(prefix = "MH"): string {
   const year = new Date().getFullYear();
@@ -56,7 +56,7 @@ export async function sendContactAutoReply(data: {
   return resend.emails.send({
     from: FROM_EMAIL,
     to: data.email,
-    subject: `We received your inquiry — MeetHub Solutions`,
+    subject: `We received your inquiry — Meet Hub Financial Services`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
         <h2 style="color:#1B2A4A;">Thank you, ${firstName}!</h2>
@@ -69,8 +69,8 @@ export async function sendContactAutoReply(data: {
         <hr style="border:none;border-top:1px solid #eee;margin:24px 0;" />
         <p style="font-size:12px;color:#888;">
           Best regards,<br/>
-          <strong>MeetHub Solutions Team</strong><br/>
-          info@meethubsolutions.com
+          <strong>Meet Hub Financial Services Team</strong><br/>
+          meethub101@gmail.com
         </p>
       </div>
     `,
@@ -123,7 +123,7 @@ export async function sendBookingAutoReply(data: {
   return resend.emails.send({
     from: FROM_EMAIL,
     to: data.email,
-    subject: `Booking Inquiry Received — ${data.package} — MeetHub Solutions`,
+    subject: `Booking Inquiry Received — ${data.package} — Meet Hub Financial Services`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
         <h2 style="color:#1B2A4A;">Thank you, ${firstName}!</h2>
@@ -137,8 +137,8 @@ export async function sendBookingAutoReply(data: {
         <hr style="border:none;border-top:1px solid #eee;margin:24px 0;" />
         <p style="font-size:12px;color:#888;">
           Best regards,<br/>
-          <strong>MeetHub Solutions — Travel Team</strong><br/>
-          info@meethubsolutions.com
+          <strong>Meet Hub Financial Services — Travel Team</strong><br/>
+          meethub101@gmail.com
         </p>
       </div>
     `,

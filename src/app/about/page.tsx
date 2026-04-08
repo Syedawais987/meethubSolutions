@@ -17,7 +17,7 @@ import { StatsBar } from "@/components/sections/stats-bar";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about MeetHub Solutions — our team, mission, and commitment to delivering comprehensive business services across Pakistan.",
+    "Learn about Meet Hub Financial Services — our team, mission, and commitment to delivering comprehensive business services across Pakistan.",
 };
 
 const values = [
@@ -51,7 +51,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        title="About MeetHub Solutions"
+        title="About Meet Hub Financial Services"
         description="Pakistan's integrated professional services firm — delivering comprehensive business solutions since day one."
         breadcrumbs={[{ label: "About" }]}
       />
@@ -69,7 +69,7 @@ export default function AboutPage() {
               </h2>
               <div className="mt-6 space-y-4 text-muted-foreground">
                 <p>
-                  MeetHub Solutions was founded with a simple belief: businesses
+                  Meet Hub Financial Services was founded with a simple belief: businesses
                   in Pakistan deserve access to world-class professional services
                   without the complexity of managing multiple vendors.
                 </p>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             <div className="relative overflow-hidden rounded-2xl">
               <Image
                 src="/images/office-team.jpg"
-                alt="MeetHub Solutions team at work"
+                alt="Meet Hub Financial Services team at work"
                 width={600}
                 height={400}
                 className="h-full w-full object-cover"

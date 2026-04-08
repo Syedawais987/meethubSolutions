@@ -6,8 +6,8 @@ import { motion, useInView } from "framer-motion";
 const stats = [
   { value: 200, suffix: "+", label: "Happy Clients" },
   { value: 50, suffix: "+", label: "Service Offerings" },
-  { value: 10, suffix: "+", label: "Years of Expertise" },
-  { value: 25, suffix: "+", label: "Qualified Professionals" },
+  { value: 15, suffix: "+", label: "Years of Expertise" },
+  { value: 10, suffix: "+", label: "Qualified Professionals" },
 ];
 
 function AnimatedCounter({
