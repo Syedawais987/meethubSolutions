@@ -9,7 +9,6 @@ import { rateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
   try {
-    // Rate limiting: 5 submissions per hour per IP
     const ip =
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       "unknown";
@@ -22,7 +21,6 @@ export async function POST(request: Request) {
 
     const body = await request.json();
 
-    // Server-side validation
     const result = contactFormSchema.safeParse(body);
     if (!result.success) {
       return NextResponse.json(
@@ -33,40 +31,62 @@ export async function POST(request: Request) {
 
     const data = result.data;
 
-    // Honeypot check — silently reject spam
     if (data.website && data.website.length > 0) {
       return NextResponse.json({ success: true });
     }
 
     const reference = generateReference("MH");
 
-    // Send emails in parallel
-    const [teamResult, customerResult] = await Promise.allSettled([
-      sendContactNotification({
-        reference,
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        company: data.company,
-        service: data.service,
-        budget: data.budget,
-        referralSource: data.referralSource,
-        message: data.message,
-      }),
-      sendContactAutoReply({
-        reference,
-        name: data.name,
-        email: data.email,
-        service: data.service,
-      }),
-    ]);
+    // Log the lead (always works, even if email fails)
+    console.log("=== NEW CONTACT LEAD ===", {
+      reference,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      company: data.company,
+      service: data.service,
+      budget: data.budget,
+      message: data.message,
+    });
 
-    // Log any email failures but still return success to user
-    if (teamResult.status === "rejected") {
-      console.error("Failed to send team notification:", teamResult.reason);
-    }
-    if (customerResult.status === "rejected") {
-      console.error("Failed to send customer auto-reply:", customerResult.reason);
+    // Send emails
+    try {
+      console.log(`[EMAIL] Sending team notification to ${process.env.CONTACT_EMAIL}...`);
+      console.log(`[EMAIL] Sending auto-reply to ${data.email}...`);
+
+      const [teamResult, customerResult] = await Promise.allSettled([
+        sendContactNotification({
+          reference,
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          company: data.company,
+          service: data.service,
+          budget: data.budget,
+          referralSource: data.referralSource,
+          message: data.message,
+        }),
+        sendContactAutoReply({
+          reference,
+          name: data.name,
+          email: data.email,
+          service: data.service,
+        }),
+      ]);
+
+      if (teamResult.status === "fulfilled") {
+        console.log("[EMAIL] Team notification sent successfully");
+      } else {
+        console.error("[EMAIL] Team notification FAILED:", teamResult.reason);
+      }
+
+      if (customerResult.status === "fulfilled") {
+        console.log("[EMAIL] Customer auto-reply sent successfully");
+      } else {
+        console.error("[EMAIL] Customer auto-reply FAILED:", customerResult.reason);
+      }
+    } catch (emailError) {
+      console.error("[EMAIL] Email sending crashed:", emailError);
     }
 
     return NextResponse.json({
@@ -77,7 +97,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Contact form error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Something went wrong. Please try again." },
       { status: 500 }
     );
   }

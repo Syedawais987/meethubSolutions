@@ -32,33 +32,54 @@ export async function POST(request: Request) {
     const data = result.data;
     const reference = generateReference("MH-T");
 
-    // Send emails in parallel
-    const [teamResult, customerResult] = await Promise.allSettled([
-      sendBookingNotification({
-        reference,
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        package: data.package,
-        travelDate: data.travelDate,
-        travelers: data.travelers,
-        requirements: data.requirements,
-        referralSource: data.referralSource,
-      }),
-      sendBookingAutoReply({
-        reference,
-        name: data.name,
-        email: data.email,
-        package: data.package,
-        travelDate: data.travelDate,
-      }),
-    ]);
+    console.log("=== NEW BOOKING LEAD ===", {
+      reference,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      package: data.package,
+      travelDate: data.travelDate,
+      travelers: data.travelers,
+    });
 
-    if (teamResult.status === "rejected") {
-      console.error("Failed to send team notification:", teamResult.reason);
-    }
-    if (customerResult.status === "rejected") {
-      console.error("Failed to send customer auto-reply:", customerResult.reason);
+    try {
+      console.log(`[EMAIL] Sending booking team notification to ${process.env.CONTACT_EMAIL}...`);
+      console.log(`[EMAIL] Sending booking auto-reply to ${data.email}...`);
+
+      const [teamResult, customerResult] = await Promise.allSettled([
+        sendBookingNotification({
+          reference,
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          package: data.package,
+          travelDate: data.travelDate,
+          travelers: data.travelers,
+          requirements: data.requirements,
+          referralSource: data.referralSource,
+        }),
+        sendBookingAutoReply({
+          reference,
+          name: data.name,
+          email: data.email,
+          package: data.package,
+          travelDate: data.travelDate,
+        }),
+      ]);
+
+      if (teamResult.status === "fulfilled") {
+        console.log("[EMAIL] Booking team notification sent successfully");
+      } else {
+        console.error("[EMAIL] Booking team notification FAILED:", teamResult.reason);
+      }
+
+      if (customerResult.status === "fulfilled") {
+        console.log("[EMAIL] Booking customer auto-reply sent successfully");
+      } else {
+        console.error("[EMAIL] Booking customer auto-reply FAILED:", customerResult.reason);
+      }
+    } catch (emailError) {
+      console.error("[EMAIL] Booking email sending crashed:", emailError);
     }
 
     return NextResponse.json({
@@ -70,7 +91,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Booking form error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Something went wrong. Please try again." },
       { status: 500 }
     );
   }
