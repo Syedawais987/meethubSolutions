@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, ChevronDown } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
 import { getWhatsAppUrl, whatsappMessages } from "@/lib/whatsapp";
 
 const slides = [
@@ -105,11 +104,7 @@ export function Hero() {
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Link
                   href={slide.primaryCta.href}
-                  className={buttonVariants({
-                    size: "lg",
-                    className:
-                      "bg-brand-teal text-white hover:bg-brand-teal-dark px-8 py-3 text-base font-semibold",
-                  })}
+                  className="inline-flex h-10 items-center justify-center rounded-lg bg-brand-teal px-8 py-3 text-base font-semibold text-white transition-colors hover:bg-brand-teal-dark"
                 >
                   {slide.primaryCta.label}
                 </Link>
@@ -117,12 +112,7 @@ export function Hero() {
                   href={getWhatsAppUrl(whatsappMessages.general)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={buttonVariants({
-                    variant: "outline",
-                    size: "lg",
-                    className:
-                      "border-white/30 text-white hover:bg-white/10 px-8 py-3 text-base",
-                  })}
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/10 px-8 py-3 text-base font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
                 >
                   <MessageCircle className="mr-2 h-5 w-5" />
                   Talk to Us on WhatsApp
