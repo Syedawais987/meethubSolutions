@@ -37,7 +37,7 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-lg">
-        <div className="container mx-auto flex h-16 items-center justify-between md:h-20 px-4 md:h-20">
+        <div className="mx-auto flex h-16 items-center justify-between px-4 md:h-20 lg:px-8">
           {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center">
             <Image
@@ -171,7 +171,7 @@ export function Header() {
             <ThemeToggle />
             <Link
               href={navigation.cta.href}
-              className="ml-1 inline-flex h-8 items-center justify-center rounded-lg border border-primary/30 px-4 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              className="ml-1 inline-flex h-8 shrink-0 whitespace-nowrap items-center justify-center rounded-lg border border-primary/30 px-4 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               {navigation.cta.label}
             </Link>
@@ -179,7 +179,7 @@ export function Header() {
               href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "923345444107"}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-8 items-center justify-center gap-1.5 rounded-lg bg-[#25D366] px-4 text-sm font-bold text-white transition-colors hover:bg-[#1fad55]"
+              className="inline-flex h-8 shrink-0 whitespace-nowrap items-center justify-center gap-1.5 rounded-lg bg-[#25D366] px-4 text-sm font-bold text-white transition-colors hover:bg-[#1fad55]"
             >
               Contact Us
             </a>
