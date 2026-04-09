@@ -9,6 +9,6 @@ export const siteConfig = {
   address: "DHA 2, Islamabad",
   socials: {
     facebook: "https://www.facebook.com/profile.php?id=61574347864306",
-    instagram: "https://www.instagram.com/",
+    instagram: "https://www.instagram.com/meethubfinancial?utm_source=qr&igsh=NnIwdHNuZTdqank0",
   },
 } as const;

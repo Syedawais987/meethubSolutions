@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { User } from "lucide-react";
+import Image from "next/image";
 import { PageHeader } from "@/components/shared/page-header";
 import { CtaBanner } from "@/components/sections/cta-banner";
 
@@ -25,14 +25,17 @@ export default function CeoMessagePage() {
           <div className="grid items-start gap-12 lg:grid-cols-5">
             {/* CEO Photo */}
             <div className="lg:col-span-2">
-              <div className="sticky top-28 overflow-hidden rounded-2xl border border-border bg-muted p-12 text-center">
-                <User className="mx-auto h-24 w-24 text-muted-foreground/30" />
-                <p className="mt-4 text-sm text-muted-foreground">
-                  
-                </p>
-                <div className="mt-6 border-t border-border pt-6">
+              <div className="sticky top-28 overflow-hidden rounded-2xl border border-border bg-muted text-center">
+                <Image
+                  src="/images/team/ceo.jpg"
+                  alt="Noman Ali — CEO, Meet Hub Financial Services"
+                  width={400}
+                  height={500}
+                  className="w-full object-cover"
+                />
+                <div className="p-6">
                   <h3 className="font-heading text-xl font-bold text-foreground">
-                    M. Noman
+                    Noman Ali, CA
                   </h3>
                   <p className="text-sm text-muted-foreground">
                     Founder &amp; CEO, Meet Hub Financial Services
@@ -86,7 +89,7 @@ export default function CeoMessagePage() {
                 <p className="mt-8 font-semibold text-foreground">
                   Warm regards,
                   <br />
-                  <span className="text-primary">M. Noman</span>
+                  <span className="text-primary">Noman Ali</span>
                   <br />
                   <span className="text-sm font-normal">
                     Founder &amp; CEO, Meet Hub Financial Services

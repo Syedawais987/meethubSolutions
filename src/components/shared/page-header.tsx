@@ -14,7 +14,7 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, description, breadcrumbs }: PageHeaderProps) {
   return (
-    <section className="page-padding bg-muted/30">
+    <section className="page-padding bg-brand-navy/30 dark:bg-brand-navy/50">
       <div className="container mx-auto px-4">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-4">

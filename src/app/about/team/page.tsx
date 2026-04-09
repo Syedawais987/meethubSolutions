@@ -11,34 +11,34 @@ export const metadata: Metadata = {
 
 const teamMembers = [
   {
-    name: "Muhammad Usman Khalid",
-    role: "Managing Partner",
-    qualifications: ["ACCA", "FCMA"],
+    name: "Noman Ali",
+    role: "CEO",
+    qualifications: ["CA"],
   },
   {
-    name: "Ahmed Raza Qureshi",
+    name: "Muhammad Kalim",
     role: "Head of Tax",
-    qualifications: ["CA", "LLB"],
+    qualifications: ["LLB"],
   },
   {
-    name: "Bilal Hassan Sheikh",
+    name: "Syed Muzammil",
     role: "ERP Consultant",
-    qualifications: ["SAP Certified"],
+    qualifications: ["Authorized Odoo Consultant"],
   },
   {
-    name: "Fatima Noor Siddiqui",
-    role: "Senior Auditor",
+    name: "Tarik Azeem",
+    role: "Accounting Consultancy Head",
     qualifications: ["ACCA"],
   },
   {
-    name: "Zainab Tariq Malik",
+    name: "Mahwish Mir",
     role: "HR & Outsourcing Lead",
-    qualifications: ["MBA"],
+    qualifications: ["MPA HR"],
   },
   {
-    name: "Hamza Ali Khan",
-    role: "Travel Operations",
-    qualifications: [],
+    name: "Sherif",
+    role: "Travel Operations North",
+    qualifications: ["Engineer"],
   },
 ];
 

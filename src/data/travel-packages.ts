@@ -52,7 +52,7 @@ export const travelPackages: TravelPackage[] = [
     duration: "1 Day",
     groupSize: "15-50 persons",
     difficulty: "easy",
-    startingPrice: 3500,
+    startingPrice: 5000,
     priceNote: "per person, minimum 15 pax",
     overview:
       "We not only provide services related to work — it's time to relax too! MHFS arranges complete day-out packages for all employees with lunch, dinner, team-building activities, and outdoor fun. Whether it's a team reward, annual get-together, or just a break from the office — we handle everything from transport to event coordination.",
@@ -104,7 +104,7 @@ export const travelPackages: TravelPackage[] = [
     seo: {
       title: "Day Out Package — Lunch, Activities & Team Fun | MHFS",
       description:
-        "Corporate day out packages near Islamabad. Lunch, dinner, team activities, transport included. Starting PKR 3,500/person.",
+        "Corporate day out packages near Islamabad. Lunch, dinner, team activities, transport included. PKR 5,000/person.",
       keywords: [
         "corporate day out Islamabad",
         "team building packages Pakistan",
@@ -129,8 +129,8 @@ export const travelPackages: TravelPackage[] = [
     duration: "5 Days / 4 Nights",
     groupSize: "10-25 persons",
     difficulty: "moderate",
-    startingPrice: 45000,
-    priceNote: "per person, twin sharing, minimum 10 pax",
+    startingPrice: 89999,
+    priceNote: "per person, all-inclusive except air tickets",
     bestSeason: "May - October",
     departureCity: "Islamabad",
     overview:
@@ -227,7 +227,7 @@ export const travelPackages: TravelPackage[] = [
     seo: {
       title: "Skardu Tour Package — 5 Days from Islamabad",
       description:
-        "5-day Skardu adventure tour from Islamabad. KKH, Shangrila, Deosai, Upper Kachura. Starting PKR 45,000/person.",
+        "5-day Skardu adventure tour from Islamabad. KKH, Shangrila, Deosai, Upper Kachura. PKR 89,999/person all-inclusive.",
       keywords: [
         "Skardu tour package",
         "Skardu trip from Islamabad",

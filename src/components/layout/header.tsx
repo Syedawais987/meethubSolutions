@@ -37,7 +37,7 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-lg">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4 md:h-20">
+        <div className="container mx-auto flex h-16 items-center justify-between md:h-20 px-4 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center">
             <Image
@@ -45,7 +45,7 @@ export function Header() {
               alt="Meet Hub Financial Services"
               width={250}
               height={73}
-              className="h-10 w-auto sm:h-12 md:h-14"
+              className="h-10 w-auto md:h-12 dark:brightness-200 dark:contrast-75"
               priority
             />
           </Link>
@@ -122,7 +122,7 @@ export function Header() {
                 >
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                    className={`flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
                       isActive(item.href) ? "text-brand-teal font-semibold" : "text-muted-foreground"
                     }`}
                   >
@@ -213,7 +213,7 @@ export function Header() {
           <div className="absolute inset-0 bg-background" />
           <div className="relative z-10 flex h-full flex-col bg-background">
             {/* Mobile header */}
-            <div className="flex h-16 shrink-0 items-center justify-between border-b border-border px-4 md:h-20">
+            <div className="flex h-16 shrink-0 items-center justify-between md:h-20 border-b border-border px-4 md:h-20">
               <Link
                 href="/"
                 className="flex shrink-0 items-center"
@@ -224,7 +224,7 @@ export function Header() {
                   alt="Meet Hub Financial Services"
                   width={250}
                   height={73}
-                  className="h-10 w-auto sm:h-12 md:h-14"
+                  className="h-10 w-auto md:h-12 dark:brightness-200 dark:contrast-75"
                 />
               </Link>
               <Button

@@ -15,7 +15,7 @@ const plans = [
   {
     name: "Starter",
     description: "For startups and small businesses getting started",
-    startingFrom: "PKR 25,000",
+    startingFrom: "PKR 30,000",
     features: [
       "Monthly bookkeeping",
       "Income tax return filing",
